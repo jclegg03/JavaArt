@@ -1,5 +1,8 @@
 package art.view;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.geom.Ellipse2D;
@@ -18,11 +21,18 @@ public class CanvasPanel extends JPanel
 	{
 		super();
 		this.app = app;
+		this.canvasImage = new BufferedImage(800, 600, BufferedImage.TYPE_INT_ARGB);
 	}
 	
-	private void drawBill()
+	private void updateCanvas()
 	{
+		Graphics2D drawingGraphics = (Graphics2D) canvasImage.getGraphics();
+		
 		Polygon leftShoulder = drawShoulder();
+		drawingGraphics.setColor(Color.BLACK);
+		drawingGraphics.setStroke(new BasicStroke(3));
+		drawingGraphics.draw(leftShoulder);
+		
 		Polygon rightShoulder = mirror(leftShoulder);
 		
 		Polygon leftArm = drawArm();
