@@ -10,7 +10,7 @@ public class ArtFrame extends JFrame
 	
 	public ArtFrame(Controller app)
 	{
-		super("Java Art");
+		super("Javart");
 		this.app = app;
 		setupFrame();
 	}
@@ -18,7 +18,7 @@ public class ArtFrame extends JFrame
 	private void setupFrame()
 	{
 		this.setContentPane(new ArtPanel(app));
-		this.setSize(800, 800);
+		this.setSize(800, 600);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
