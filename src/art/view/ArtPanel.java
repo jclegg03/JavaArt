@@ -11,5 +11,24 @@ public class ArtPanel extends JPanel
 	public ArtPanel(Controller app)
 	{
 		this.app = app;
+		
+		setupPanel();
+		setupLayout();
+		setupListeners();
+	}
+	
+	private void setupPanel()
+	{
+		
+	}
+	
+	private void setupLayout()
+	{
+		
+	}
+	
+	private void setupListeners()
+	{
+		
 	}
 }
