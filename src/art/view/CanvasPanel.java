@@ -3,19 +3,40 @@ package art.view;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.geom.Ellipse2D;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+import art.controller.Controller;
+
 public class CanvasPanel extends JPanel
 {
+	private Controller app;
+	private BufferedImage canvasImage;
 	
+	public CanvasPanel(Controller app)
+	{
+		super();
+		this.app = app;
+	}
 	
 	private void drawBill()
 	{
 		Polygon leftShoulder = drawShoulder();
+		Polygon rightShoulder = mirror(leftShoulder);
+		
 		Polygon leftArm = drawArm();
+		Polygon rightArm = mirror(leftArm);
+		
 		Polygon leftBody = drawBody();
+		Polygon rightBody = mirror(leftBody);
+		
 		Polygon leftLeg = drawLeg();
+		Polygon rightLeg = mirror(leftLeg);
+		
+		Ellipse2D.Double eye = drawEye();
+		
+		
 	}
 	
 	private Polygon drawShoulder()
