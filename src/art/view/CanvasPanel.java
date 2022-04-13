@@ -10,13 +10,12 @@ public class CanvasPanel extends JPanel
 {
 	
 	
-	private Polygon drawBill()
+	private void drawBill()
 	{
-		Polygon bill = new Polygon();
-		
-		
-		
-		return bill;
+		Polygon leftShoulder = drawShoulder();
+		Polygon leftArm = drawArm();
+		Polygon leftBody = drawBody();
+		Polygon leftLeg = drawLeg();
 	}
 	
 	private Polygon drawShoulder()
@@ -67,16 +66,15 @@ public class CanvasPanel extends JPanel
 	
 	private Polygon mirror(Polygon shape)
 	{
-		Polygon mirror = new Polygon();
-		
 		int[] xPoints = new int[shape.npoints];
 		int[] yPoints = new int[shape.npoints];
 		
-		for(int x : shape.xpoints)
+		for(int index = 0; index < shape.ypoints.length; index++)
 		{
-			
+			xPoints[index] = 800 - shape.xpoints[index];
+			yPoints[index] = 600 - shape.ypoints[index];
 		}
 		
-		return mirror;
+		return new Polygon(xPoints, yPoints, xPoints.length);
 	}
 }
