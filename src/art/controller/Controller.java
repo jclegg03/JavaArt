@@ -10,4 +10,9 @@ public class Controller
 	{
 		this.frame = new ArtFrame(this);
 	}
+	
+	public void handleError(Exception error)
+	{
+		
+	}
 }

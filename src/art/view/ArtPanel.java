@@ -31,7 +31,7 @@ public class ArtPanel extends JPanel
 	
 	private void setupPanel()
 	{
-		this.setBackground(Color.MAGENTA);
+//		this.setBackground(Color.MAGENTA);
 		this.add(canvas);
 		this.add(menuPanel);
 		
