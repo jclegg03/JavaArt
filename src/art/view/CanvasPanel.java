@@ -28,27 +28,48 @@ public class CanvasPanel extends JPanel
 	
 	private void updateCanvas()
 	{
+		drawBill();
+	}
+	
+	private void drawBill()
+	{
 		Graphics2D drawingGraphics = (Graphics2D) canvasImage.getGraphics();
 		
 		Polygon leftShoulder = drawShoulder();
 		drawingGraphics.setColor(Color.BLACK);
 		drawingGraphics.setStroke(new BasicStroke(3));
-		drawingGraphics.draw(leftShoulder);
+		drawingGraphics.fill(leftShoulder);
 		
 		Polygon rightShoulder = mirror(leftShoulder);
+		drawingGraphics.fill(rightShoulder);
 		
 		Polygon leftArm = drawArm();
+		drawingGraphics.setStroke(new BasicStroke(2));
+		drawingGraphics.fill(leftArm);
+		
 		Polygon rightArm = mirror(leftArm);
+		drawingGraphics.fill(rightArm);
 		
 		Polygon leftBody = drawBody();
+		drawingGraphics.setColor(Color.YELLOW);
+		drawingGraphics.setStroke(new BasicStroke(4));
+		drawingGraphics.fill(leftBody);
+		
 		Polygon rightBody = mirror(leftBody);
+		drawingGraphics.fill(rightBody);
 		
 		Polygon leftLeg = drawLeg();
+		drawingGraphics.setColor(Color.BLACK);
+		drawingGraphics.setStroke(new BasicStroke(2));
+		drawingGraphics.fill(leftLeg);
+		
 		Polygon rightLeg = mirror(leftLeg);
+		drawingGraphics.fill(rightLeg);
 		
 		Ellipse2D.Double eye = drawEye();
-		
-		
+		drawingGraphics.setColor(Color.RED);
+		drawingGraphics.setStroke(new BasicStroke(1));
+		drawingGraphics.fill(eye);
 	}
 	
 	private Polygon drawShoulder()
