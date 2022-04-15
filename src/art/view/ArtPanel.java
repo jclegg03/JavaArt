@@ -23,14 +23,6 @@ public class ArtPanel extends JPanel
 		this.menuPanel = new JPanel();
 		this.saveButton = new JButton("Save");
 		this.layout = new SpringLayout();
-		layout.putConstraint(SpringLayout.NORTH, menuPanel, 0, SpringLayout.NORTH, canvas);
-		layout.putConstraint(SpringLayout.WEST, menuPanel, 20, SpringLayout.EAST, canvas);
-		layout.putConstraint(SpringLayout.SOUTH, menuPanel, 0, SpringLayout.SOUTH, canvas);
-		layout.putConstraint(SpringLayout.EAST, menuPanel, -20, SpringLayout.EAST, this);
-		layout.putConstraint(SpringLayout.NORTH, canvas, 20, SpringLayout.NORTH, this);
-		layout.putConstraint(SpringLayout.WEST, canvas, 20, SpringLayout.WEST, this);
-		layout.putConstraint(SpringLayout.SOUTH, canvas, -20, SpringLayout.SOUTH, this);
-		layout.putConstraint(SpringLayout.EAST, canvas, -150, SpringLayout.EAST, this);
 		
 		setupPanel();
 		setupLayout();
@@ -49,6 +41,15 @@ public class ArtPanel extends JPanel
 	private void setupLayout()
 	{
 		this.setLayout(layout);
+		
+		layout.putConstraint(SpringLayout.NORTH, menuPanel, 0, SpringLayout.NORTH, canvas);
+		layout.putConstraint(SpringLayout.WEST, menuPanel, 20, SpringLayout.EAST, canvas);
+		layout.putConstraint(SpringLayout.SOUTH, menuPanel, 0, SpringLayout.SOUTH, canvas);
+		layout.putConstraint(SpringLayout.EAST, menuPanel, -20, SpringLayout.EAST, this);
+		layout.putConstraint(SpringLayout.NORTH, canvas, 20, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, canvas, 20, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.SOUTH, canvas, -20, SpringLayout.SOUTH, this);
+		layout.putConstraint(SpringLayout.EAST, canvas, -150, SpringLayout.EAST, this);
 	}
 	
 	private void setupListeners()
