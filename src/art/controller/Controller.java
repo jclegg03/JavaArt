@@ -1,5 +1,7 @@
 package art.controller;
 
+import javax.swing.JOptionPane;
+
 import art.view.ArtFrame;
 
 public class Controller
@@ -13,6 +15,6 @@ public class Controller
 	
 	public void handleError(Exception error)
 	{
-		
+		JOptionPane.showMessageDialog(frame, error.getMessage(), "Javart error!", JOptionPane.ERROR_MESSAGE);	
 	}
 }
