@@ -81,19 +81,25 @@ public class CanvasPanel extends JPanel
 		
 		Polygon rightHat = mirrorX(leftHat);
 		drawingGraphics.fill(rightHat);
+		
+		Polygon leftTie = drawBowTie();
+		drawingGraphics.fill(leftTie);
+		
+		Polygon rightTie = mirrorX(leftTie);
+		drawingGraphics.fill(rightTie);
 	}
 	
 	private Polygon drawShoulder()
 	{
 		int[] xValues = {371, 371, 257, 257};
-		int[] yValues = {270, 240, 240, 270};
+		int[] yValues = {300, 330, 330, 300};
 		
 		return new Polygon(xValues, yValues, xValues.length);
 	}
 	
 	private Polygon drawArm()
 	{
-		Point[] points = {new Point(257, 240), new Point(257, 480), new Point(229, 480), new Point(229, 240)};
+		Point[] points = {new Point(257, 300), new Point(257, 480), new Point(229, 480), new Point(229, 300)};
 		Polygon arm = new Polygon();
 		
 		for(Point point : points)
@@ -134,8 +140,8 @@ public class CanvasPanel extends JPanel
 	
 	private Polygon drawBowTie()
 	{
-		int[] xValues = {400};
-		int[] yValues = {330, 360, 300};
+		int[] xValues = {402, 374, 374};
+		int[] yValues = {330, 345, 315};
 		
 		return new Polygon(xValues, yValues, xValues.length);
 	}
