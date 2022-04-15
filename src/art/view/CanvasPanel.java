@@ -2,6 +2,7 @@ package art.view;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Polygon;
@@ -21,7 +22,8 @@ public class CanvasPanel extends JPanel
 	{
 		super();
 		this.app = app;
-		this.canvasImage = new BufferedImage(800, 600, BufferedImage.TYPE_INT_ARGB);
+		this.canvasImage = new BufferedImage(600, 600, BufferedImage.TYPE_INT_ARGB);
+		updateCanvas();
 	}
 	
 	private void updateCanvas()
@@ -107,5 +109,12 @@ public class CanvasPanel extends JPanel
 		}
 		
 		return new Polygon(xPoints, yPoints, xPoints.length);
+	}
+	
+	@Override
+	protected void paintComponent(Graphics graphics)
+	{
+		super.paintComponent(graphics);
+		graphics.drawImage(canvasImage, 0, 0, null);
 	}
 }
