@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Ellipse2D.Double;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
@@ -40,14 +41,14 @@ public class CanvasPanel extends JPanel
 		drawingGraphics.setStroke(new BasicStroke(3));
 		drawingGraphics.fill(leftShoulder);
 		
-		Polygon rightShoulder = mirror(leftShoulder);
+		Polygon rightShoulder = mirrorX(leftShoulder);
 		drawingGraphics.fill(rightShoulder);
 		
 		Polygon leftArm = drawArm();
 		drawingGraphics.setStroke(new BasicStroke(2));
 		drawingGraphics.fill(leftArm);
 		
-		Polygon rightArm = mirror(leftArm);
+		Polygon rightArm = mirrorX(leftArm);
 		drawingGraphics.fill(rightArm);
 		
 		Polygon leftBody = drawBody();
@@ -55,7 +56,7 @@ public class CanvasPanel extends JPanel
 		drawingGraphics.setStroke(new BasicStroke(4));
 		drawingGraphics.fill(leftBody);
 		
-		Polygon rightBody = mirror(leftBody);
+		Polygon rightBody = mirrorX(leftBody);
 		drawingGraphics.fill(rightBody);
 		
 		Polygon leftLeg = drawLeg();
@@ -63,13 +64,23 @@ public class CanvasPanel extends JPanel
 		drawingGraphics.setStroke(new BasicStroke(2));
 		drawingGraphics.fill(leftLeg);
 		
-		Polygon rightLeg = mirror(leftLeg);
+		Polygon rightLeg = mirrorX(leftLeg);
 		drawingGraphics.fill(rightLeg);
 		
 		Ellipse2D.Double eye = drawEye();
 		drawingGraphics.setColor(Color.RED);
 		drawingGraphics.setStroke(new BasicStroke(1));
 		drawingGraphics.fill(eye);
+		
+		Ellipse2D.Double pupil = drawPupil();
+		drawingGraphics.setColor(Color.BLACK);
+		drawingGraphics.fill(pupil);
+		
+		Polygon leftHat = drawHat();
+		drawingGraphics.fill(leftHat);
+		
+		Polygon rightHat = mirrorX(leftHat);
+		drawingGraphics.fill(rightHat);
 	}
 	
 	private Polygon drawShoulder()
@@ -113,12 +124,25 @@ public class CanvasPanel extends JPanel
 		return new Polygon(xValues, yValues, xValues.length);
 	}
 	
-	private Ellipse2D.Double drawEye()
+	private Polygon drawHat()
 	{
-		return new Ellipse2D.Double(371.0, 240.0, 2.0, 2.0);
+		int[] xValues = {400, 400, 371, 371, 352, 352};
+		int[] yValues = {150, 70, 70, 142, 142, 150};
+		
+		return new Polygon(xValues, yValues, xValues.length);
 	}
 	
-	private Polygon mirror(Polygon shape)
+	private Ellipse2D.Double drawEye()
+	{
+		return new Ellipse2D.Double(380.0, 240.0, 38.0, 19.0);
+	}
+	
+	private Ellipse2D.Double drawPupil()
+	{
+		return new Ellipse2D.Double(396.0, 240.0, 7.0, 19.0);
+	}
+	
+	private Polygon mirrorX(Polygon shape)
 	{
 		int[] xPoints = new int[shape.npoints];
 		int[] yPoints = new int[shape.npoints];
@@ -126,7 +150,7 @@ public class CanvasPanel extends JPanel
 		for(int index = 0; index < shape.ypoints.length; index++)
 		{
 			xPoints[index] = 800 - shape.xpoints[index];
-			yPoints[index] = 600 - shape.ypoints[index];
+			yPoints[index] = shape.ypoints[index];
 		}
 		
 		return new Polygon(xPoints, yPoints, xPoints.length);

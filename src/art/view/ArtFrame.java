@@ -17,7 +17,7 @@ public class ArtFrame extends JFrame
 	
 	private void setupFrame()
 	{
-		this.setContentPane(new ArtPanel(app));
+		this.setContentPane(new CanvasPanel(app));
 		this.setSize(800, 600);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);

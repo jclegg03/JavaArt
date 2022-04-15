@@ -22,11 +22,11 @@ public class ArtPanel extends JPanel
 	private void setupPanel()
 	{
 		this.setBackground(Color.MAGENTA);
+		this.add(new CanvasPanel(app));
 	}
 	
 	private void setupLayout()
 	{
-		
 	}
 	
 	private void setupListeners()
