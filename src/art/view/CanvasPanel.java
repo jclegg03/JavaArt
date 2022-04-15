@@ -132,6 +132,14 @@ public class CanvasPanel extends JPanel
 		return new Polygon(xValues, yValues, xValues.length);
 	}
 	
+	private Polygon drawBowTie()
+	{
+		int[] xValues = {400};
+		int[] yValues = {330, 360, 300};
+		
+		return new Polygon(xValues, yValues, xValues.length);
+	}
+	
 	private Ellipse2D.Double drawEye()
 	{
 		return new Ellipse2D.Double(380.0, 240.0, 38.0, 19.0);
