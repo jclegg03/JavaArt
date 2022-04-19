@@ -1,5 +1,6 @@
 package art.view;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -36,31 +37,106 @@ public class ShapePanel extends JPanel
 	{
 		Graphics2D drawingGraphics = (Graphics2D) (this.getGraphics());
 		
-		generateTriangles();
-		generateOtherShapes();
-		generateEllipses();
+		generateTriangles(10);
+		generateOtherShapes(10);
+		generateEllipses(10);
+		
+		for(Polygon triangle : triangles)
+		{
+			drawingGraphics.setStroke(new BasicStroke((int) (Math.random() * 3 + 1)));
+			drawingGraphics.setColor(randomColor());
+			drawingGraphics.fill(triangle);
+		}
+		
+		for(Polygon shape : otherShapes)
+		{
+			drawingGraphics.setStroke(new BasicStroke((int) (Math.random() * 3 + 1)));
+			drawingGraphics.setColor(randomColor());
+			drawingGraphics.draw(shape);
+		}
+		
+		for(Ellipse2D.Double ellipse : ellipses)
+		{
+			drawingGraphics.setStroke(new BasicStroke((int) (Math.random() * 3 + 1)));
+			drawingGraphics.setColor(randomColor());
+			drawingGraphics.fill(ellipse);
+		}
 	}
 	
-	private void generateTriangles()
+	private void generateTriangles(int numTriangles)
 	{
+		triangles.clear();
 		
+		while(numTriangles > 0)
+		{
+			int[] point1 = randomLocation();
+			int[] point2 = randomLocation();
+			int[] point3 = randomLocation();
+			
+			int[] xValues = {point1[0], point2[0], point3[0]};
+			int[] yValues = {point1[1], point2[1], point3[1]};
+			
+			Polygon triangle = new Polygon(xValues, yValues, xValues.length);
+			triangles.add(triangle);
+			
+			numTriangles--;
+		}
 	}
 	
-	private void generateOtherShapes()
+	private void generateOtherShapes(int numShapes)
 	{
+		otherShapes.clear();
 		
+		while(numShapes > 0)
+		{
+			int numPoints = (int) (Math.random() * 10);
+			
+			int[] xValues = new int[numPoints];
+			int[] yValues = new int[numPoints];
+			
+			for(int index = 0; index < numPoints; index++)
+			{
+				xValues[index] = (int) (Math.random() * 600);
+				yValues[index] = (int) (Math.random() * 600);
+			}
+			
+			Polygon shape = new Polygon(xValues, yValues, xValues.length);
+			otherShapes.add(shape);
+			
+			numShapes--;
+		}
 	}
 	
-	private void generateEllipses()
+	private void generateEllipses(int numEllipses)
 	{
+		ellipses.clear();
 		
+		while(numEllipses > 0)
+		{
+			double xVal = (Math.random() * 560 + 20);
+			double yVal = (Math.random() * 560 + 20);
+			double length = (Math.random() * 19 + 1);
+			double width = (Math.random() * 19 + 1);
+			
+			Ellipse2D.Double ellipse = new Ellipse2D.Double(xVal, yVal, length, width);
+			ellipses.add(ellipse);
+			
+			numEllipses--;
+		}
+	}
+	
+	private int[] randomLocation()
+	{
+		int[] location = {(int) (Math.random() * 600), (int) (Math.random() * 600)};
+		return location;
 	}
 	
 	private Color randomColor()
 	{
-		int randRed = (int) (Math.random() * 246 + 10);
-		int randGreen = (int) (Math.random() * 246 + 10);
-		int randBlue = (int) (Math.random() * 246 + 10);
+		int randRed = (int) (Math.random() * 236 + 10);
+		int randGreen = (int) (Math.random() * 236 + 10);
+		int randBlue = (int) (Math.random() * 236 + 10);
+		int randAlpha = (int) (Math.random() * 236 + 10);
 		
 		return new Color(randRed, randGreen, randBlue);
 	}
