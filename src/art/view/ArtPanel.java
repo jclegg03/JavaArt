@@ -166,6 +166,6 @@ public class ArtPanel extends JPanel
 			canvas.setCurrentVerticies(verticySlider.getValue());
 		}
 		
-		verticyLabel.setText("Verticies :" + verticySlider.getValue());
+		verticyLabel.setText("Verticies: " + verticySlider.getValue());
 	}
 }
