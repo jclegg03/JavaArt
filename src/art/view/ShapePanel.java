@@ -218,4 +218,36 @@ public class ShapePanel extends JPanel
 	{
 		makeArt(0, 0, 0);
 	}
+
+	/**
+	 * @return the currentScale
+	 */
+	public int getCurrentScale()
+	{
+		return currentScale;
+	}
+
+	/**
+	 * @param currentScale the currentScale to set
+	 */
+	public void setCurrentScale(int currentScale)
+	{
+		this.currentScale = currentScale;
+	}
+
+	/**
+	 * @return the currentVerticies
+	 */
+	public int getCurrentVerticies()
+	{
+		return currentVerticies;
+	}
+
+	/**
+	 * @param currentVerticies the currentVerticies to set
+	 */
+	public void setCurrentVerticies(int currentVerticies)
+	{
+		this.currentVerticies = currentVerticies;
+	}
 }
